@@ -1,14 +1,15 @@
 var express = require('express')
 
-const register = require('../Models/Registerschema');
+// const register = require('../Models/Registerschema');
+const register = require('../Models/Registerschema')
 const { model } = require('mongoose');
 const { Route } = require('express');
 var router = express.Router();
 
 
-Router.post('/' , async function (req, res, next) {
+router.post('/' , async function (req, res, next) {
     try {
-        data = await model.create(req.body)
+        data = await register.create(req.body)
         console.log(data);
         res.status(201).json({
             status: 'success',
@@ -19,4 +20,4 @@ Router.post('/' , async function (req, res, next) {
         console.log(error);
     }
 })
-module.exports = Router
+module.exports = router
